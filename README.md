@@ -1,131 +1,137 @@
-# 📊 AI-Powered Sales Forecasting
+# AI-Powered Sales Forecasting
 
-**Predict future revenue trends using deep learning (LSTM) and statistical forecasting (ARIMA)**
-
----
-
-## 📌 Overview
-
-This project builds a robust sales forecasting pipeline using two powerful time-series approaches:
-- **LSTM (Long Short-Term Memory)**: A deep learning model capable of learning complex sequential patterns
-- **ARIMA/SARIMA**: A classical statistical model for structured univariate forecasting
-
-The goal is to forecast monthly sales revenue using historical retail transaction data and visualize predictions through an interactive **Streamlit dashboard**.
+This project implements a dual-model time series forecasting pipeline to predict future sales revenue using historical retail transaction data. It combines classical statistical modeling (ARIMA) with deep learning (LSTM) to generate robust and interpretable forecasts. A Streamlit dashboard provides an interactive interface to visualize trends and predictions.
 
 ---
 
-## 🎯 Project Objective
+## Project Objective
 
-- Build a time-series forecasting model for monthly sales
-- Compare statistical and deep learning approaches (ARIMA vs LSTM)
-- Present forecasts in a business-friendly dashboard with downloadable results
-- Deliver explainable and actionable outputs for business decision-making
-
----
-
-## 🧠 Technologies & Libraries
-
-| Tool | Purpose |
-|------|---------|
-| `pandas`, `numpy` | Data loading and manipulation |
-| `matplotlib`, `seaborn` | Exploratory data visualization |
-| `MinMaxScaler` | Normalize values for LSTM |
-| `tensorflow.keras` | Deep learning (LSTM) model |
-| `pmdarima`, `statsmodels` | Time series forecasting (ARIMA) |
-| `scikit-learn` | Evaluation metrics |
-| `streamlit`, `plotly` | Dashboard and visual reporting |
+To enable business teams and data scientists to:
+- Forecast monthly revenue using both ARIMA and LSTM models
+- Compare model performance using visual and quantitative metrics
+- Provide actionable business forecasts through an interactive dashboard
 
 ---
 
-## 🗂️ Project Structure
-📁 AI-Sales-Forecasting-Project/
-├── salesforecasting.py               # ✅ Main implementation script (LSTM + ARIMA + Streamlit)
-│
-├── data/                             # 📦 Raw and processed datasets
-│   ├── Superstore.csv                # Original dataset
-│   ├── cleaned_Superstore.csv        # Cleaned & monthly aggregated sales data
-│   ├── processed_superstore.csv      # Dashboard-ready sales data
-│   ├── forecast_results.csv          # 12-month ARIMA forecast results
-│
-├── output/                           # 📊 Visualizations & dashboard screenshots
-│   ├── Figure_1.png                  # Scaled monthly sales trend
-│   ├── Figure_2.png                  # Actual vs. predicted sales (LSTM)
-│   ├── Figure_3.png                  # ARIMA forecast with confidence intervals
-│   ├── dashboard_screenshot_1.png   # Streamlit metrics view
-│   ├── dashboard_screenshot_2.png   # Streamlit forecast visualization
-│
-├── README.md                         # 📘 Project overview and instructions (GitHub read
+## Features
+
+- Time series aggregation and preprocessing
+- LSTM-based forecasting (sequence modeling)
+- ARIMA-based univariate prediction
+- Evaluation with MAE and RMSE
+- Interactive dashboard for trend exploration
+- CSV export of forecast results
 
 ---
 
-## 📈 Data Processing & Modeling Flow
+## Conceptual Study
 
-1. **Data Aggregation**
-   - Daily retail sales data resampled to monthly
-   - Cleaned, sorted, and indexed by date
+For a deeper dive into the model designs and forecasting logic, read the [Conceptual Study PDF](https://github.com/Pre123140/SALES_FORECASTING_PROJECT/blob/main/SALES_FORECASTING_ADVANCED.pdf).
 
-2. **LSTM Forecasting**
-   - Scaled using `MinMaxScaler`
-   - Created 12-month rolling sequences
-   - Trained LSTM model with two layers, dropout regularization
-
-3. **ARIMA Forecasting**
-   - Best parameters selected via `auto_arima`
-   - Forecasted 12 months ahead with confidence intervals
-
-4. **Evaluation**
-   - Metrics: MAE, RMSE
-   - Visual plots: actual vs predicted (LSTM), forecast chart (ARIMA)
-
-5. **Dashboard**
-   - Built with Streamlit to showcase trends, forecasts, and allow CSV export
+Covers:
+- ARIMA hyperparameter tuning and seasonality
+- LSTM input preparation and architecture
+- Model comparison logic and interpretation
+- Forecasting challenges in real-world applications
 
 ---
 
-## 📊 Results
+## Tech Stack
 
-| Metric | Value |
-|--------|--------|
-| MAE    | 16,163.11 |
-| RMSE   | 18,025.34 |
-
-- LSTM captured short-term fluctuations effectively
-- ARIMA showed interpretable seasonal patterns
-- Both models were plotted for comparison
-- Business-ready dashboard built for analysis
+- pandas – Data loading and manipulation
+- numpy – Time series aggregation and transformation
+- scikit-learn – MinMaxScaler and evaluation metrics
+- tensorflow.keras – Deep learning model (LSTM)
+- pmdarima – Auto ARIMA for optimal statistical forecasting
+- statsmodels – Time series modeling backend
+- matplotlib, seaborn – Static data visualization
+- plotly – Interactive charts
+- streamlit – Interactive dashboard interface
 
 ---
 
-## 🚀 Try It Yourself
+## Folder Structure
 
-1. Install required packages:
+```
+SALES_FORECASTING_ADVANCED/
+├── cleaned_Superstore.csv
+├── forecast_results.csv
+├── processed_superstore.csv
+├── sales_forecasting.py
+├── Superstore_Feature_Engineered.csv
+├── Superstore.csv
+├── requirements.txt
 
+```
+
+Note: All outputs are displayed through the dashboard. No images or graphs are stored in the repository.
+
+---
+
+## How to Run the Project
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Pre123140/SALES_FORECASTING_PROJECT.git
+cd SALES_FORECASTING_ADVANCED
+```
+
+### 2. (Optional) Set Up a Virtual Environment
+```bash
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+```
+
+### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
+```
 
-
-2. Run the Streamlit dashboard:
-streamlit run salesforecasting.py
-
-Deliverables
-✅ Forecasted datasets (CSV)
-✅ Interactive Streamlit app
-✅ Evaluation metrics
-✅ Visual comparisons of both models
-✅ PDF reports and conceptual explanation (separate)
-
-📘 Learn More
-Explore the full Conceptual Study to understand:
-Why LSTM and ARIMA were chosen
-Time-series modeling principles
-Real-world forecasting applications
-
-📄 License & Use
-This project is for educational and illustrative purposes only.
-Commercial use or adaptation is prohibited without permission.
-
+### 4. Launch the Dashboard
+```bash
+streamlit run sales_forecasting.py
+```
 
 ---
 
-Let me know if you'd like a **separate `requirements.txt`**, PDF export of the README, or if you'd like the dashboard hosted for preview.
+## Model Performance Summary
 
+| Model | MAE       | RMSE      |
+|--------|------------|-----------|
+| LSTM   | 16,163.11  | 18,025.34 |
+| ARIMA  | Similar, interpretable trendlines |
+
+- LSTM effectively captured recent and nonlinear trends
+- ARIMA captured seasonal and long-term behavior
+- Both predictions are visualized side-by-side in the dashboard
+
+---
+
+## Key Deliverables
+
+- Time series feature engineered datasets
+- Forecasted revenue using both LSTM and ARIMA
+- MAE/RMSE evaluation of both models
+- Streamlit-based forecasting dashboard
+- Downloadable CSV of predictions
+
+---
+
+## Future Enhancements
+
+- Add Facebook Prophet as a third forecasting option
+- Enable regional or subcategory-based forecasts
+- PDF/Excel report generation for sharing insights
+- Add deployment-ready UI and container support
+- Use hybrid/ensemble models for improved accuracy
+
+---
+
+## License
+
+This project is open for educational use only. For commercial deployment, contact the author.
+
+---
+
+## Contact
+If you'd like to learn more or collaborate on projects or other initiatives, feel free to connect on [LinkedIn](https://www.linkedin.com/in/prerna-burande-99678a1bb/) or check out my [portfolio site](https://youtheleader.com/).
