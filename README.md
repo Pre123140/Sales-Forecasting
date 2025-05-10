@@ -26,7 +26,7 @@ To enable business teams and data scientists to:
 
 ## Conceptual Study
 
-For a deeper dive into the model designs and forecasting logic, read the [Conceptual Study PDF](https://github.com/Pre123140/SALES_FORECASTING_PROJECT/blob/main/SALES_FORECASTING_ADVANCED.pdf).
+For a deeper dive into the model designs and forecasting logic, read the [Conceptual Study PDF](https://github.com/Pre123140/Sales-Forecasting/blob/main/AI_POWERED_SALES_FORECASTING.pdf).
 
 Covers:
 - ARIMA hyperparameter tuning and seasonality
